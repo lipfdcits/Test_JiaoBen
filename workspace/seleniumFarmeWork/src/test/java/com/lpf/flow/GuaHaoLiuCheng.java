@@ -21,7 +21,6 @@ public class GuaHaoLiuCheng {
     @Test
     public void loginPage() throws InterruptedException {
         login.loginAction("chrome","https://testsaas.qingxiaoguo.com","15110403429","123456");
-        Action.click(selectHospital.zhensuo1);
     }
     //关闭浏览器
 //    @AfterTest
@@ -69,7 +68,7 @@ public class GuaHaoLiuCheng {
             //输入身份证号
             //Action.sendText(GuaHao.shenfenzheng,"110101199003079016");
 
-            for (int j = 5; j < JxlFun.readRows(exclePath,"Sheet4")+1;j++) {
+            for (int j = 6; j < JxlFun.readRows(exclePath,"Sheet4")+1;j++) {
                 //选择挂号日期
                 Action.click(By.xpath(JxlFun.readText(exclePath, "Sheet4", j, 1)));
                 //点击收款

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<!-- 登录地址 -->
+    <login_url>https://testsaas.qingxiaoguo.com</login_url>
+    
+    <!-- 登出地址 -->
+    <logout_url>https://testsaas.qingxiaoguo.com</logout_url>
+    
+    <!-- 是否打开截图功能，可设置的值为：ON,OFF -->
+    <ScreentShot_ON_OFF>ON</ScreentShot_ON_OFF>	
+    
+    <!-- 选择浏览器,可设置的值为：IE,Chrome,FireFox -->									
+    <browser>Chrome</browser>															
+</data>

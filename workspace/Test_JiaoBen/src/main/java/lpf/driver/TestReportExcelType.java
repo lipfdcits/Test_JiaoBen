@@ -1,11 +1,10 @@
-package com.lpf.driver.tools;
+package lpf.driver;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import jxl.read.biff.BiffException;
+import jxl.write.WriteException;
+import lpf.driver.tools.JxlFun;
+import lpf.driver.tools.TestBase;
+import lpf.driver.tools.XmlFun;
 import org.apache.commons.io.FileUtils;
 import org.dom4j.DocumentException;
 import org.openqa.selenium.OutputType;
@@ -15,8 +14,11 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import jxl.read.biff.BiffException;
-import jxl.write.WriteException;
+import java.io.File;
+import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TestReportExcelType extends TestListenerAdapter{
 	private String reportPath;
