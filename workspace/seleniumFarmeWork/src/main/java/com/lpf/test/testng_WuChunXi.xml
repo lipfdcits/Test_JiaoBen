@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite" parallel="false">
+	<listeners>  
+        <listener class-name="com.lpf.driver.TestReportExcelType"></listener>
+	</listeners>
+	<test name="Test" preserve-order="true">
+		<classes>
+    		<class name="com.lpf.checkOut.secondPageCheckOut">
+
+      		</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

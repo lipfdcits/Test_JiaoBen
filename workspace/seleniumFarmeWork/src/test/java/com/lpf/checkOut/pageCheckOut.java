@@ -4,6 +4,8 @@ import com.lpf.driver.Action;
 import com.lpf.driver.PageCheckOutUtil;
 import com.lpf.driver.elementFind;
 import com.lpf.driver.login;
+import com.lpf.driver.tools.JxlFun;
+import jxl.read.biff.BiffException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -20,13 +22,15 @@ import page.yishengqu.*;
 import page.yunyingguanli.JingYingFenXi;
 import page.yunyingguanli.YongHuYunYing;
 
+import java.io.IOException;
+
 //页面跳转检验
 public class pageCheckOut {
+    String path=System.getProperty("user.dir")+"\\TestExcle\\登录.xls";
     //登录成功后页面跳转检验
     @BeforeTest
-    public void loginPage() throws InterruptedException {
-        login.loginAction("chrome","https://testsaas.qingxiaoguo.com","15110403429","123456");
-        Action.click(selectHospital.zhensuo1);
+    public void loginPage() throws InterruptedException, IOException, BiffException {
+        login.loginAction("chrome","https://testsaas.qingxiaoguo.com", JxlFun.readText(path,"Sheet1",2,1),JxlFun.readText(path,"Sheet1",2,2));
     }
     //关闭浏览器
     @AfterTest

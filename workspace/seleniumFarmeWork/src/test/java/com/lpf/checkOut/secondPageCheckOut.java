@@ -2,6 +2,8 @@ package com.lpf.checkOut;
 
 import com.holmos.webtest.struct.Page;
 import com.lpf.driver.*;
+import com.lpf.driver.tools.JxlFun;
+import jxl.read.biff.BiffException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.*;
@@ -17,15 +19,16 @@ import page.yishengqu.XunZhengYixue;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class secondPageCheckOut {
+    String path=System.getProperty("user.dir")+"\\TestExcle\\登录.xls";
     
     //登录
     @BeforeTest
-    public void loginPage() throws InterruptedException {
-        login.loginAction("chrome","https://testsaas.qingxiaoguo.com","15110403429","123456");
-        Action.click(selectHospital.zhensuo1);
+    public void loginPage() throws InterruptedException, IOException, BiffException {
+        login.loginAction("chrome","https://testsaas.qingxiaoguo.com", JxlFun.readText(path,"Sheet1",2,1),JxlFun.readText(path,"Sheet1",2,2));
     }
     //关闭浏览器
     @AfterTest
@@ -159,7 +162,7 @@ public class secondPageCheckOut {
 //    public void refresh(){
 //        Action.refresh();
 //    }
-    @Test
+    @Test(priority = 1)
     public void gailan() throws InterruptedException, AWTException {
         //点击预约挂号,查看并校验页面跳转
         PageCheckOutUtil.checkout("预约挂号", GaiLan.yuyueguahao, GuaHao.chakanyishengpaiban,"查看医生排班>");
@@ -177,13 +180,13 @@ public class secondPageCheckOut {
         PageCheckOutUtil.checkout("退号",GaiLan.tuihao,GaiLan.querentuikuan,"确认退款");
         Action.click(GaiLan.quxiao);
     }
-    @Test
+    @Test(priority = 2)
     public void guahao() throws InterruptedException {
         //点击查看医生排班
         PageCheckOutUtil.checkout("查看医生排班",GuaHao.chakanyishengpaiban,GuaHao.yishengpaiban,"医生排班");
         Action.click(GuaHao.quxiao);
     }
-    @Test
+    @Test(priority = 3)
     public void shoukuan() throws InterruptedException {
         //点击收款按钮
         PageCheckOutUtil.checkout("收款按钮",ShouKuan.shoukuanButton,ShouKuan.querenshoukuan,"确认收款");
@@ -200,20 +203,20 @@ public class secondPageCheckOut {
         PageCheckOutUtil.checkout("订单号",ShouKuan.dingdanhao,ShouKuan.danjia,"单价");
         //点击取消
         PageCheckOutUtil.checkout("取消",ShouKuan.dingdanquxiao,ShouKuan.shoukuan,"收款");
-        //点击一键收款
-        Action.click(ShouKuan.firstdingdan);
-        PageCheckOutUtil.checkout("一键收款",ShouKuan.yijianshoukuan,ShouKuan.yingshoujine_yijian,"应收金额");
-        //点击取消
-        PageCheckOutUtil.checkout("取消",ShouKuan.quxiaozhifu,ShouKuan.shoukuan,"收款");
+//        //点击一键收款
+//        Action.click(ShouKuan.firstdingdan);
+//        PageCheckOutUtil.checkout("一键收款",ShouKuan.yijianshoukuan,ShouKuan.yingshoujine_yijian,"应收金额");
+//        //点击取消
+//        PageCheckOutUtil.checkout("取消",ShouKuan.quxiaozhifu,ShouKuan.shoukuan,"收款");
     }
-    @Test
+    @Test(priority = 14)
     public void tuikuan() throws InterruptedException {
         //点击退款按钮
         PageCheckOutUtil.checkout("退款",TuiKuan.tuikuanButton,TuiKuan.querentuikuan,"确认退款");
         //点击取消
         PageCheckOutUtil.checkout("退款取消",TuiKuan.quxiao,TuiKuan.tuikuanTital,"退款");
     }
-    @Test
+    @Test(priority = 4)
     public void feiyong() throws InterruptedException {
         //点击日结
         PageCheckOutUtil.checkout("日结", FeiYong.rijie,FeiYong.xinzeng,"新增");
@@ -222,17 +225,17 @@ public class secondPageCheckOut {
         //点击取消
         PageCheckOutUtil.checkout("取消",FeiYong.quxiao,FeiYong.rijie,"日结");
     }
-    @Test
+    @Test(priority = 5)
     public void jinrijiuzhen() throws InterruptedException {
         //点击快速就诊
         PageCheckOutUtil.checkout("快速就诊", JinRiJiuZhen.kuaisujiuzhen, DianZiBingLi.jibenxinxi,"基本信息");
     }
-    @Test
+    @Test(priority = 6)
     public void jiankangdangan() throws InterruptedException {
         //点击第一个卡片
         PageCheckOutUtil.checkout("卡片一", JianKangDangAn.kapian1,JianKangDangAn.jiuzhenjilu,"就诊记录");
     }
-    @Test
+    @Test(priority = 7)
     public void dingdan() throws InterruptedException {
         //待发药
         PageCheckOutUtil.checkout("待发药", DingDan.daifayao, FaYao.dingdanhao,"订单号");
@@ -271,7 +274,7 @@ public class secondPageCheckOut {
         //点击取消
         PageCheckOutUtil.checkout("取消",DingDan.quxiao_yijian,DingDan.shoukuan,"收款");
     }
-    @Test
+    @Test(priority = 8)
     public void lingshou() throws InterruptedException {
         //点击商品
         PageCheckOutUtil.checkout("商品",LingShou.shangpin,LingShou.shangpinmingcheng,"商品名称");
@@ -289,7 +292,7 @@ public class secondPageCheckOut {
         PageCheckOutUtil.checkout("挂单",LingShou.guadan,LingShou.qingshuruxingming,"请输入姓名");
         PageCheckOutUtil.checkout("挂单",LingShou.guadan,LingShou.qingshurushoujihao,"请输入手机号");
     }
-    @Test
+    @Test(priority = 9)
     public void fayao1() throws InterruptedException {
         //点击发药
         PageCheckOutUtil.checkout("发药",FaYao.fayao_xiayao,FaYao.xuanzefafang,"选择发放");
@@ -322,7 +325,7 @@ public class secondPageCheckOut {
 //        PageCheckOutUtil.checkout("关闭",FaYao.guanbi_zhongyao,FaYao.yifafang_zhongyao,"已发放");
 //    }
 
-    @Test
+    @Test(priority = 10)
     public void zhenji() throws InterruptedException {
         //点击开始执行
         PageCheckOutUtil.checkout("开始执行",ZhenJi.kaishizhixing,ZhenJi.tijiao,"提交");
@@ -338,7 +341,7 @@ public class secondPageCheckOut {
 //        //点击关闭
 //        PageCheckOutUtil.checkout("关闭",ZhenJi.guanbi1,ZhenJi.daizhixing,"待执行");
 //    }
-    @Test
+    @Test(priority = 11)
     public void jiancha() throws InterruptedException {
         //点击开始执行
         PageCheckOutUtil.checkout("开始执行",JianCha.kaishizhixing, JianCha.quxiao,"取消");
@@ -349,7 +352,7 @@ public class secondPageCheckOut {
         PageCheckOutUtil.checkout("提交",JianCha.tijiao,JianCha.kaishizhixing,"开始执行");
     }
 
-    @Test
+    @Test(priority = 12)
     public void jianyan() throws InterruptedException {
         //点击开始执行
         PageCheckOutUtil.checkout("开始执行",JianYan.kaishizhixing,JianYan.quxiao,"取消");
@@ -359,7 +362,7 @@ public class secondPageCheckOut {
         Action.click(JianYan.kaishizhixing);
         PageCheckOutUtil.checkout("提交",JianYan.tijiao,JianYan.kaishizhixing,"开始执行");
     }
-    @Test
+    @Test(priority = 13)
     public void liliao() throws InterruptedException {
         //点击开始执行
         PageCheckOutUtil.checkout("开始执行",LiLiao.kaishizhixing,LiLiao.quxiao,"取消");
