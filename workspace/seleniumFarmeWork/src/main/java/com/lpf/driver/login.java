@@ -1,5 +1,6 @@
 package com.lpf.driver;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.loginPage;
 import page.selectHospital;
@@ -20,7 +21,7 @@ public class login extends openBrowser {
         //点击登录按钮
         Action.click(loginPage.login);
         //选择医院
-        Action.click(selectHospital.zhensuo1);
+        Action.click(By.xpath("//*[@id=\"app\"]/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div[2]"));
     }
 
 }

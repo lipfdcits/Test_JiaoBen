@@ -77,5 +77,8 @@ public class Action extends openBrowser {
         boolean panduan = driver.findElement(by).isDisplayed();
         return panduan;
     }
-
+    //清空输入框
+    public static void clear(By by){
+        driver.findElement(by).clear();
+    }
 }

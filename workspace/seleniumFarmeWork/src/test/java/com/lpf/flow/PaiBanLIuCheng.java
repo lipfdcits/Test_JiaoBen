@@ -22,7 +22,6 @@ public class PaiBanLIuCheng {
     @BeforeTest
     public static void loginPage() throws InterruptedException {
         login.loginAction("chrome", "https://testsaas.qingxiaoguo.com", "15110403429", "123456");
-        Action.click(selectHospital.zhensuo1);
     }
 
     //关闭浏览器
@@ -69,12 +68,23 @@ public class PaiBanLIuCheng {
         loop1:
         for (int nameId = 2; nameId < JxlFun.readRows(path, "Sheet3")+1; nameId++) {
 
-            //点击排班设置后查询
+            //点击排班设置后输入查询内容
             Action.sendText(ZhenSuoGuanLi.chaxun, JxlFun.readText(path, "Sheet3",nameId,1));
             //点击查询
             Action.click(ZhenSuoGuanLi.chaxunButton);
-            //点击排班时间
-            Action.click(ZhenSuoGuanLi.paibanshijian1);
+            Thread.sleep(1000);
+            if(Action.getText(By.xpath("//*[@id=\"pane-scheduling\"]/div/div/div[2]/div[3]/div/span")).equals("暂无数据")){
+                nameId++;
+                Action.sendText(ZhenSuoGuanLi.chaxun, JxlFun.readText(path, "Sheet3",nameId,1));
+                //点击查询
+                Action.click(ZhenSuoGuanLi.chaxunButton);
+                continue loop1;
+            }else {
+
+                //点击排班时间
+                Action.click(ZhenSuoGuanLi.paibanshijian1);
+            }
+
             loop2:
             for (int i = 2; i < JxlFun.readRows(path, "Sheet2")+1; i++) {
                 //选择排班日期

@@ -18,7 +18,7 @@ public class GuaHaoLiuCheng {
     static String exclePath=System.getProperty("user.dir")+"\\TestExcle\\GuaHao.xls";
 
     //登录成功后页面跳转检验
-    @Test
+    @BeforeTest
     public void loginPage() throws InterruptedException {
         login.loginAction("chrome","https://testsaas.qingxiaoguo.com","15110403429","123456");
     }
