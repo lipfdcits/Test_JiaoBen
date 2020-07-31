@@ -1,0 +1,18 @@
+server:
+  port: 8888
+logging:
+  file:
+    name: mylog.log
+    path: log
+spring:
+  application:
+    name: userManager
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3333/account?serverTimezone=GMT&useSSL=false
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.course.model
+  mapper-locations:
+    - mapper/mysql.xml

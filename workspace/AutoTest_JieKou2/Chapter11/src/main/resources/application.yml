@@ -1,0 +1,18 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: myTest
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3333/account?serverTimezone=UTC
+    username: root
+    password: root
+logging:
+  file:
+    name: mylog.log
+    path: logs
+mybatis:
+  type-aliases-package: com.course.model
+  mapper-locations:
+    - mapper/*
