@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function onsubmitFun() {
+            alert("参数有误,静态提交失败!");
+            return false;
+        }
+
+        window.onload=function () {
+            //获得元素定位
+            var dong = document.getElementById("dong");
+
+            dong.onsubmit=function () {
+                alert("参数有误,动态提交失败!");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="http://www.baidu.com" method="get" onsubmit="return onsubmitFun()">
+        <input type="submit" value="静态提交">
+    </form>
+
+    <form action="http://www.baidu.com" method="get" id="dong">
+        <input type="submit" value="动态提交">
+    </form>
+</body>
+</html>

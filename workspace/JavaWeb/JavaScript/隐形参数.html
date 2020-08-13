@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        // function fun() {
+        //     alert(arguments[0]);
+        //     alert(arguments[1]);
+        //     alert(arguments[2]);
+        //     alert("无参函数fun()");
+        //
+        // }
+
+        // fun(1,"123",true);
+        //fun(1,"abc",true);
+
+        // function sum(num1,mun2) {
+        //     var result=0;
+        //     for (var i=0;i<arguments.length;i++){
+        //         if(typeof (arguments[i])=="number"){
+        //
+        //             result =result + arguments[i];
+        //         }
+        //     }
+        //     return result;
+        // }
+
+        var test={
+            name:"张三",
+            age:18,
+            fun:function () {
+                alert("姓名:"+this.name+",年龄:"+this.age);
+            }
+        };
+        alert(test.name);
+        alert(test.age);
+        //alert(test.fun());
+    </script>
+</head>
+<body>
+
+</body>
+</html>
